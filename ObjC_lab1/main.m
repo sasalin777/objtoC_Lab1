@@ -64,7 +64,10 @@ restartprogram:
                 }
                 
                 case 4: {
-                    NSLog(@"%@,eh?",inputString);
+                    
+                    NSMutableString *str = inputString;
+                     str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                    NSLog(@"%@,eh?",str);
                     goto KeepGoing;
                 }
                 
@@ -102,16 +105,9 @@ restartprogram:
                 }
                     
                 case 8: {
-                   // NSString *str = inputString;
-                    //NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：()；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•'@#$%^&*()_+'\""];
-                    //NSString *trimmedString = [inputString stringByTrimmingCharactersInSet:set];
-//                    NSString *newStr = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//
-//                    NSString *trimmedString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]];
-//                    NSLog(@"%@",newStr);
-//                    NSString *str = inputString;
-//                    NSString *newStr = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//                    NSLog(@"处理之前|%@|, 处理之后|%@|", str, newStr);
+                    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：()；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•'@#$%^&*()_+'\""];
+                    NSString *trimmedString = [inputString stringByTrimmingCharactersInSet:set];
+                   NSLog(@"处理之前|%@|, 处理之后|%@|",trimmedString);
                     goto KeepGoing;
                 }
                     
