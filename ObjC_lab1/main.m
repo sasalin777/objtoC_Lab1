@@ -11,13 +11,11 @@ NSString *getUserInput(NSString *prompt) {
     
     // 1. array of chars
     char inputChars[255];
-    // printf("Input a string: ");
     NSLog(@"%@", prompt);
     fgets(inputChars, 255, stdin);
-    // printf("Your imputer is: %s\n", inputChars);
     // covert char array (c string) to a NSString object
     return [NSString stringWithUTF8String:inputChars];
-    //NSLog(@"Input was : %@",inputString);
+
 }
 
 int main(int argc, const char * argv[]) {
@@ -26,7 +24,6 @@ restartprogram:
     
     NSString *inputString = getUserInput(@"\nEnter your String:('q' to quit) ");
         if ([inputString  isEqual: @"q\n"]) {
-           // goto outer_done;
           userBreak;
 
         } else if ([inputString  isEqual: @"\n"]) {
@@ -37,7 +34,6 @@ restartprogram:
         NSLog(@"\nChoose one of the following options:\n1. Uppercase\n2. Lowercase\n3. Numberize\n4. Canadianize\n5. Respond\n6. Do-Space-It\n7. Word count\n8. Remove Punctuation\n9. Done ");
             int inputInt;
             scanf("%i", &inputInt);
-            //NSLog(@"%d",inputInt);
             switch (inputInt) {
                     
                 case 1: {
@@ -111,9 +107,11 @@ restartprogram:
                 }
                     
                 case 8: {
-                    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：()；（）¥「」＂、?[]{}#%-*+=_\\|~＜＞$€^•'@#$%^&*()_+'\""];
-                   NSString *trimmedString = [inputString stringByTrimmingCharactersInSet:set];
-                   NSLog(@"%@",trimmedString);
+                    NSError *error = nil;
+                    NSString *pattern = @"[^a-zA-Z0-9\u4e00-\u9fa5]";
+                        NSRegularExpression *regularExpress = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+                        NSString *string = [regularExpress stringByReplacingMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length]) withTemplate:@" "];
+                   NSLog(@"%@",string);
                     goto KeepGoing;
                 }
                     
@@ -122,16 +120,14 @@ restartprogram:
                     inputString = @"";
                     goto restartprogram;
                 }
+                
+                default: {
+                    NSLog(@"Please input again!(1 - 9)!");
+                    goto KeepGoing;
+                }
             }
-      //  goto inputIntArea;
         }
-   // outer_done: printf("out!");
-//        printf("Your string is %s\n", inputChars);
-//        NSString *inputString = [NSString stringWithUTF8String:inputChars];
-//        NSLog(@"Input was: %@", inputString);
-  //      inputIntArea:
-        
-       // switch (
+ 
     }
     return 0;
 }
