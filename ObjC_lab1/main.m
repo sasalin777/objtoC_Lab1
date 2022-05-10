@@ -66,7 +66,7 @@ restartprogram:
                 case 4: {
                     
                     NSMutableString *str = inputString;
-                     str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                    str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
                     NSLog(@"%@,eh?",str);
                     goto KeepGoing;
                 }
@@ -99,15 +99,21 @@ restartprogram:
                     
 //                    int lenth = [inputString length]-1;
 //                    NSLog(@"%d",lenth);
-                    
-                    
+                    NSUInteger spaces = 0;
+                    for (NSUInteger index = 0; index < [inputString length]; index++) {
+                        if ([inputString characterAtIndex:index] == ' ' || [inputString characterAtIndex:index] == '-')   {
+                            spaces++;
+                        }
+                    }
+                    NSLog(@"%d",spaces+1);
+                                       
                     goto KeepGoing;
                 }
                     
                 case 8: {
-                    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：()；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•'@#$%^&*()_+'\""];
-                    NSString *trimmedString = [inputString stringByTrimmingCharactersInSet:set];
-                   NSLog(@"处理之前|%@|, 处理之后|%@|",trimmedString);
+                    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：()；（）¥「」＂、?[]{}#%-*+=_\\|~＜＞$€^•'@#$%^&*()_+'\""];
+                   NSString *trimmedString = [inputString stringByTrimmingCharactersInSet:set];
+                   NSLog(@"%@",trimmedString);
                     goto KeepGoing;
                 }
                     
