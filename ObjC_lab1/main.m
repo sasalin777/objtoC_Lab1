@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-NSMutableString *getUserInput(NSString *prompt) {
+NSString *getUserInput(NSString *prompt) {
     
     // 1. array of chars
     char inputChars[255];
@@ -94,8 +94,10 @@ restartprogram:
                     
                 case 7: {
                     
-                    int lenth = [inputString length]-1;
-                    NSLog(@"%d",lenth);
+//                    int lenth = [inputString length]-1;
+//                    NSLog(@"%d",lenth);
+                    
+                    
                     goto KeepGoing;
                 }
                     

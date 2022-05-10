@@ -240,6 +240,8 @@
 		F70AD74B2829EE5300B15B9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ObjC_lab1.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P34S8968S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -250,6 +252,8 @@
 		F70AD74C2829EE5300B15B9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ObjC_lab1.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P34S8968S;
 				ENABLE_HARDENED_RUNTIME = YES;
